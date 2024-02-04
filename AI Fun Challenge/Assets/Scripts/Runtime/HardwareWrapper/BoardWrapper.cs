@@ -7,27 +7,13 @@ using Runtime.HardwareMimic;
 
 namespace Runtime.HardwareWrapper
 {
-    #region Enums
-
-    public enum PinNumber
-    {
-        Pin1,
-        Pin2,
-        Pin3,
-        Pin4,
-        Pin5,
-        Pin6,
-        Pin7,
-        Pin8
-    }
-
-    #endregion
-
     public sealed class BoardWrapper
     {
         #region Values
 
         private BoardMimic hardware;
+
+        private Crawler crawler;
 
         #endregion
 
@@ -37,8 +23,15 @@ namespace Runtime.HardwareWrapper
         {
             this.hardware = hardware;
 
-            new Crawler(this);
+            this.crawler = new Crawler(this);
         }
+
+        #endregion
+
+        #region In
+
+        public void Update() =>
+            this.crawler.Update();
 
         #endregion
     }
@@ -47,7 +40,7 @@ namespace Runtime.HardwareWrapper
     {
         #region Values
 
-        private PinNumber pinNumber;
+        private int pinNumber;
 
         private BoardWrapper boardWrapper;
 
@@ -55,7 +48,7 @@ namespace Runtime.HardwareWrapper
 
         #region Build In States
 
-        public Pin(PinNumber pinNumber, BoardWrapper boardWrapper)
+        public Pin(int pinNumber, BoardWrapper boardWrapper)
         {
             this.pinNumber = pinNumber;
             this.boardWrapper = boardWrapper;

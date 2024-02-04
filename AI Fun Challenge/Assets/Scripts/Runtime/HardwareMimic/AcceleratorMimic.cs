@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Runtime.HardwareMimic
 {
-    public sealed class AcceleratorMimic : MonoBehaviour
+    public sealed class AcceleratorMimic : ComponentMimic
     {
     
     }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Runtime.HardwareMimic
 {
-    public sealed class CameraMimic : MonoBehaviour
+    public sealed class CameraMimic : ComponentMimic
     {
 
     }
