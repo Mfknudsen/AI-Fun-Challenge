@@ -1,2 +1,6 @@
 # AI Fun Challenge
- https://cphbusiness.mrooms.net/mod/page/view.php?id=668019
+Challenge on Moodle:
+https://cphbusiness.mrooms.net/mod/page/view.php?id=668019
+
+Trello kanban board:
+https://trello.com/b/QjUVqK2J/ai-fun-challenge
