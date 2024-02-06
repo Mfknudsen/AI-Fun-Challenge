@@ -13,7 +13,7 @@ namespace Runtime.Body
 
         private BoardWrapper boardWrapper;
 
-        private Leg legForwardLeft,
+        private readonly Leg legForwardLeft,
             legForwardRight,
             legMiddleLeft,
             legMiddleRight,
@@ -46,6 +46,7 @@ namespace Runtime.Body
 
         public void Update()
         {
+            this.brain.SetIsProperlyGrounded(this.IsProperlyGrounded());
         }
 
         #endregion

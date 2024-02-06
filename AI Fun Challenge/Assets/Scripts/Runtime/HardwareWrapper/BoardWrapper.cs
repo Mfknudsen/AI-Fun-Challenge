@@ -30,8 +30,10 @@ namespace Runtime.HardwareWrapper
 
         #region In
 
-        public void Update() =>
+        public void Update()
+        {
             this.crawler.Update();
+        }
 
         #endregion
     }
@@ -52,6 +54,15 @@ namespace Runtime.HardwareWrapper
         {
             this.pinNumber = pinNumber;
             this.boardWrapper = boardWrapper;
+        }
+
+        #endregion
+
+        #region Getters
+
+        public int GetNumber()
+        {
+            return this.pinNumber;
         }
 
         #endregion
