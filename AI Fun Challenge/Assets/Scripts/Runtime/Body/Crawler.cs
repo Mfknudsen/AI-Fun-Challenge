@@ -1,7 +1,9 @@
 #region Libraries
 
+using System.Collections.Generic;
 using Runtime.HardwareWrapper;
 using Runtime.Mind;
+using UnityEngine;
 
 #endregion
 
@@ -20,7 +22,17 @@ namespace Runtime.Body
             legBackLeft,
             legBackRight;
 
-        private Brain brain;
+        private readonly Brain brain;
+
+        private readonly DistanceSensorWrapper distanceSensorWrapper;
+
+        private readonly CameraWrapper cameraWrapper;
+
+        private readonly AcceleratorWrapper acceleratorWrapper;
+
+        private readonly GyroWrapper gyroWrapper;
+
+        private readonly List<Timer> timers = new();
 
         #endregion
 
@@ -30,6 +42,11 @@ namespace Runtime.Body
         {
             this.boardWrapper = boardWrapper;
 
+            this.distanceSensorWrapper = new DistanceSensorWrapper(new Pin(18, boardWrapper));
+            this.cameraWrapper = new CameraWrapper(new Pin(19, boardWrapper));
+            this.acceleratorWrapper = new AcceleratorWrapper(new Pin(20, boardWrapper));
+            this.gyroWrapper = new GyroWrapper(new Pin(21, boardWrapper));
+
             this.legForwardLeft = new Leg(0, 1, 2, boardWrapper);
             this.legForwardRight = new Leg(3, 4, 5, boardWrapper);
             this.legMiddleLeft = new Leg(6, 7, 8, boardWrapper);
@@ -37,8 +54,16 @@ namespace Runtime.Body
             this.legBackLeft = new Leg(12, 13, 14, boardWrapper);
             this.legBackRight = new Leg(15, 16, 17, boardWrapper);
 
-            this.brain = new Brain();
+            this.brain = new Brain(this.legForwardLeft, this.legForwardRight, this.legMiddleLeft, this.legMiddleRight,
+                this.legBackLeft, this.legBackRight);
+            Debug.Log("Crawler constructor");
         }
+
+        #endregion
+
+        #region Getters
+
+        public Brain GetBrain() => this.brain;
 
         #endregion
 
@@ -47,6 +72,20 @@ namespace Runtime.Body
         public void Update()
         {
             this.brain.SetIsProperlyGrounded(this.IsProperlyGrounded());
+            List<Timer> toRemove = new();
+            foreach (Timer timer in this.timers)
+                if (timer.Update(Time.deltaTime))
+                    toRemove.Add(timer);
+
+            foreach (Timer timer in toRemove)
+                this.timers.Remove(timer);
+
+            this.brain.SetDistanceMeasurements(this.distanceSensorWrapper.GetInput());
+        }
+
+        public void AddTimer(Timer toAdd)
+        {
+            this.timers.Add(toAdd);
         }
 
         #endregion

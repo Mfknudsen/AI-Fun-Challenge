@@ -28,6 +28,17 @@ namespace Runtime.HardwareWrapper
 
         #endregion
 
+        #region Getters
+
+#if UNITY_EDITOR
+        public Crawler GetCrawler()
+        {
+            return this.crawler;
+        }
+#endif
+
+        #endregion
+
         #region In
 
         public void Update()
@@ -60,10 +71,9 @@ namespace Runtime.HardwareWrapper
 
         #region Getters
 
-        public int GetNumber()
-        {
-            return this.pinNumber;
-        }
+        public int GetNumber() => this.pinNumber;
+
+        public BoardWrapper GetBoard() => this.boardWrapper;
 
         #endregion
 

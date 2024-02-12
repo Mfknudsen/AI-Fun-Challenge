@@ -1,6 +1,7 @@
 #region Libraries
 
 using System.Collections.Generic;
+using Runtime.Body;
 using Runtime.HardwareWrapper;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,6 +31,14 @@ namespace Runtime.HardwareMimic
 
         #endregion
 
+        #region Getters
+
+#if UNITY_EDITOR
+        public Crawler GetCrawlerFromBoard() => this.boardWrapper.GetCrawler();
+#endif
+
+        #endregion
+        
         #region In
 
         public void AddComponentToPin(int pinNumber, UnityAction<float> action)

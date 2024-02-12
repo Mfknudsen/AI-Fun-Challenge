@@ -1,10 +1,10 @@
 namespace Runtime.HardwareWrapper
 {
-    public sealed class CameraWrapper : ComponentWrapper
+    public sealed class GyroWrapper : ComponentWrapper
     {
         #region Build In States
 
-        public CameraWrapper(Pin pin) : base(pin.GetBoard())
+        public GyroWrapper(Pin pin) : base(pin.GetBoard())
         {
         }
 
