@@ -1,7 +1,6 @@
 #region Libraries
 
-using Runtime.Body;
-using Runtime.HardwareMimic;
+using Runtime.Hardware;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -14,18 +13,7 @@ namespace Editor
     {
         #region Values
 
-        [SerializeField] [Required] private BoardMimic boardMimic;
-
-        private Crawler crawler;
-
-        #endregion
-
-        #region Build In States
-
-        private void Start()
-        {
-            this.crawler = this.boardMimic.GetCrawlerFromBoard();
-        }
+        [SerializeField] [Required] private Board board;
 
         #endregion
     }

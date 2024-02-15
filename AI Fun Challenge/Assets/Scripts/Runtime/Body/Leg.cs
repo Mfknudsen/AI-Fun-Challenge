@@ -1,28 +1,45 @@
 #region Libraries
 
-using Runtime.HardwareWrapper;
+using Runtime.Hardware;
+using Sirenix.OdinInspector;
+using Unity.MLAgents.Policies;
+using UnityEngine;
 
 #endregion
 
 namespace Runtime.Body
 {
-    public sealed class Leg
+    public sealed class Leg : MonoBehaviour
     {
         #region Values
 
-        private bool isGrounded;
+        [SerializeField] [RequiredIn(PrefabKind.PrefabInstance)]
+        private Board board;
 
-        private RotorWrapper jointUpper, jointMiddle, jointLower;
+        [SerializeField] [Required] private BehaviorParameters behaviourParameters;
+
+        [SerializeField] [Required] private Transform groundCheckTransform;
+
+        [SerializeField] [Min(0)] private float groundCheckRadius;
+
+        [SerializeField] private LayerMask groundLayerMask;
+
+        private bool isGrounded, mustBeGrounded;
+
+        [SerializeField] private Rotor hip, knee, angle;
+
+        private Vector3 estimatedBodyConnectionPoint,
+            newEstimatedBodyConnectionPoint,
+            estimatedGroundPoint;
 
         #endregion
 
         #region Build In States
 
-        public Leg(int upper, int middle, int lower, BoardWrapper boardWrapper)
+        private void Update()
         {
-            this.jointUpper = new RotorWrapper(upper, boardWrapper);
-            this.jointMiddle = new RotorWrapper(middle, boardWrapper);
-            this.jointLower = new RotorWrapper(lower, boardWrapper);
+            this.isGrounded = Physics.CheckSphere(this.groundCheckTransform.position, this.groundCheckRadius,
+                this.groundLayerMask);
         }
 
         #endregion
@@ -30,6 +47,15 @@ namespace Runtime.Body
         #region Getters
 
         public int GetIsGrounded() => this.isGrounded ? 1 : 0;
+
+        #endregion
+
+        #region Setter
+
+        public void SetMustBeGrounded(bool set)
+        {
+            this.mustBeGrounded = set;
+        }
 
         #endregion
     }

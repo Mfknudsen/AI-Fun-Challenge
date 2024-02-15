@@ -6,9 +6,9 @@ using UnityEngine;
 
 #endregion
 
-namespace Runtime.HardwareMimic
+namespace Runtime.Hardware
 {
-    public sealed class DistanceSensorMimic : ComponentMimic
+    public sealed class DistanceSensor : Component
     {
         #region Values
 

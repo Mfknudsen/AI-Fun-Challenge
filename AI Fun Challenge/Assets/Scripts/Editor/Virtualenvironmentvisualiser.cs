@@ -1,9 +1,10 @@
 #region Libraries
 
-using Runtime.HardwareMimic;
+using Runtime.Hardware;
 using Runtime.Mind;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 #endregion
 
@@ -14,7 +15,9 @@ namespace Editor
     {
         #region Values
 
-        [SerializeField] [Required] private BoardMimic boardMimic;
+        [FormerlySerializedAs("boardMimic")] [SerializeField] [Required]
+        private Board board;
+
         [SerializeField] private Vector3 initialOffset;
 
         private VirtualEnvironment environment;
@@ -25,7 +28,7 @@ namespace Editor
 
         private void Start()
         {
-            this.environment = this.boardMimic.GetCrawlerFromBoard().GetBrain().GetEnvironment();
+            this.environment = this.board.GetBrain().GetEnvironment();
 
             Mesh finalMesh = new();
 

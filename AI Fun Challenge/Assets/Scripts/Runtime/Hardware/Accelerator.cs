@@ -4,9 +4,9 @@ using UnityEngine;
 
 #endregion
 
-namespace Runtime.HardwareMimic
+namespace Runtime.Hardware
 {
-    public sealed class AcceleratorMimic : ComponentMimic
+    public sealed class Accelerator : Component
     {
         #region Values
 
