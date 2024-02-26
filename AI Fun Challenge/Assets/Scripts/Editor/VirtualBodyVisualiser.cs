@@ -1,8 +1,9 @@
 #region Libraries
 
-using Runtime.Hardware;
+using Runtime;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 #endregion
 
@@ -13,7 +14,8 @@ namespace Editor
     {
         #region Values
 
-        [SerializeField] [Required] private Board board;
+        [FormerlySerializedAs("crawler")] [FormerlySerializedAs("board")] [SerializeField] [Required]
+        private CrawlerAgent crawlerAgent;
 
         #endregion
     }

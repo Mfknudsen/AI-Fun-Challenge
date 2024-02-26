@@ -1,6 +1,6 @@
 #region Libraries
 
-using Runtime.Hardware;
+using Runtime;
 using Runtime.Mind;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -15,8 +15,12 @@ namespace Editor
     {
         #region Values
 
-        [FormerlySerializedAs("boardMimic")] [SerializeField] [Required]
-        private Board board;
+        [FormerlySerializedAs("crawler")]
+        [FormerlySerializedAs("board")]
+        [FormerlySerializedAs("boardMimic")]
+        [SerializeField]
+        [Required]
+        private CrawlerAgent crawlerAgent;
 
         [SerializeField] private Vector3 initialOffset;
 
@@ -28,8 +32,6 @@ namespace Editor
 
         private void Start()
         {
-            this.environment = this.board.GetBrain().GetEnvironment();
-
             Mesh finalMesh = new();
 
             this.GetComponent<MeshFilter>().mesh = finalMesh;

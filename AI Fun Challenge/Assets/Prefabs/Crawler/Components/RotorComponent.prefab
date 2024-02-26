@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3572883749109402575}
   - component: {fileID: 731062855454243083}
   m_Layer: 0
-  m_Name: Rotor
+  m_Name: RotorHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,10 +28,10 @@ Transform:
   m_GameObject: {fileID: 461917168162231903}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.65, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.10000001, y: 0.1, z: 0.10000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8244980032534391875}
+  m_Father: {fileID: 973001025472833004}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2870361568488778792
@@ -136,8 +136,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 709115358783158274}
+  m_Children: []
   m_Father: {fileID: 973001025472833004}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -242,8 +241,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8244980032534391875}
+  - {fileID: 709115358783158274}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8890914585446331152
 MonoBehaviour:
@@ -257,6 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcac0d14aa2b1a4b87fdf9bf1b9accb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardMimic: {fileID: 0}
-  pinNumber: 0
+  currentAngle: 0
   rotorHead: {fileID: 709115358783158274}
+  rotateSpeed: 0.1

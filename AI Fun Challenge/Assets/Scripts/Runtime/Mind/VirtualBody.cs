@@ -21,7 +21,7 @@ namespace Runtime.Mind
 
         #region Build In States
 
-        public VirtualBody(Leg[] legs)
+        public VirtualBody(LegAgent[] legs)
         {
         }
 

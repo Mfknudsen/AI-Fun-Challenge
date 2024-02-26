@@ -17,7 +17,7 @@ namespace Runtime.Mind
 
         #region Build In States
 
-        public Brain(params Leg[] legs)
+        public Brain(params LegAgent[] legs)
         {
             this.virtualBody = new VirtualBody(legs);
             this.virtualEnvironment = new VirtualEnvironment();
