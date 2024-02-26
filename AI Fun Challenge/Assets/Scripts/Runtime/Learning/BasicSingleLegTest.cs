@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Runtime.Learning
 {
-    public class BasicLegTest : MonoBehaviour
+    public class BasicSingleLegTest : MonoBehaviour
     {
         #region Values
 
@@ -23,5 +23,5 @@ namespace Runtime.Learning
         }
 
         #endregion
-    }   
+    }
 }

@@ -1,5 +1,6 @@
 #region Libraries
 
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -22,6 +23,26 @@ namespace Runtime.Hardware
         #endregion
 
         #region Build In States
+
+        private void OnDrawGizmos()
+        {
+            Vector3 right = this.transform.right;
+
+            List<Vector3> directions = new();
+
+            for (int i = 0; i < 90; i++)
+            {
+                directions.Add((this.transform.forward - right +
+                                right / 90 * i * 2).normalized * 2);
+            }
+
+            Vector3 position = this.transform.position;
+            for (int i = 0; i < directions.Count - 1; i++)
+                Debug.DrawLine(position + directions[i], position + directions[i + 1], Color.red);
+
+            Debug.DrawRay(position, this.rotorHead.forward * 2, Color.green);
+            Debug.
+        }
 
         private void OnValidate()
         {
